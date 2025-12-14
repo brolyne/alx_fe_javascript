@@ -7,8 +7,18 @@
   </head>
   <body>
     <h1>Dynamic Quote Generator</h1>
+    <div>
+      <label for="categoryFilter">Filter by category: </label>
+      <select id="categoryFilter" onchange="filterQuotes()">
+        <option value="all">All Categories</option>
+      </select>
+    </div>
     <div id="quoteDisplay"></div>
-    <button id="newQuote">Show New Quote</button>
+    <div style="margin-top:10px">
+      <button id="newQuote">Show New Quote</button>
+      <button id="syncNow" style="margin-left:8px">Sync Now</button>
+    </div>
+    <div id="syncNotification" style="display:none; margin-top:12px; padding:8px; border:1px solid #ccc; background:#fff8c6"></div>
     <script src="script.js"></script>
   </body>
   </html>

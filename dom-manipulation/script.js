@@ -109,7 +109,7 @@ async function syncWithServer() {
   saveQuotesToLocalStorage();
   populateCategories();
   filterQuotes();
-  showNotification('Server changes applied. You can revert.', { revert: true });
+  showNotification('Quotes synced with server!', { revert: true });
 }
 
 // Backwards-compatible wrapper requested by user

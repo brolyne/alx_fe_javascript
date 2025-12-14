@@ -247,13 +247,6 @@ function createAddQuoteForm() {
   addBtn.textContent = 'Add Quote';
   addBtn.addEventListener('click', addQuote);
 
-  // Export button
-  const exportBtn = document.createElement('button');
-  exportBtn.id = 'exportJsonBtn';
-  exportBtn.textContent = 'Export Quotes';
-  exportBtn.style.marginLeft = '8px';
-  exportBtn.addEventListener('click', exportToJson);
-
   // Import file input
   const importInput = document.createElement('input');
   importInput.type = 'file';
@@ -265,7 +258,6 @@ function createAddQuoteForm() {
   container.appendChild(inputText);
   container.appendChild(inputCategory);
   container.appendChild(addBtn);
-  container.appendChild(exportBtn);
   container.appendChild(importInput);
 
   const existing = document.getElementById('quoteDisplay');
@@ -402,6 +394,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const syncBtn = document.getElementById('syncNow');
   if (syncBtn) syncBtn.addEventListener('click', () => syncWithServer());
+
+  const exportBtnEl = document.getElementById('exportJsonBtn');
+  if (exportBtnEl) exportBtnEl.addEventListener('click', exportToJson);
 
   // Load persisted quotes first
   loadQuotesFromLocalStorage();

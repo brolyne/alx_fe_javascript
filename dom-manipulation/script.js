@@ -112,6 +112,11 @@ async function syncWithServer() {
   showNotification('Server changes applied. You can revert.', { revert: true });
 }
 
+// Backwards-compatible wrapper requested by user
+function syncQuotes() {
+  return syncWithServer();
+}
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }

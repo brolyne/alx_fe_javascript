@@ -63,7 +63,13 @@ function showNotification(message, options = {}) {
 
 async function fetchServerQuotes() {
   try {
-    const res = await fetch(SERVER_POSTS_URL + '?_limit=10');
+    const res = await fetch(SERVER_POSTS_URL + '?_limit=10', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    });
     if (!res.ok) throw new Error('Network response not ok');
     const data = await res.json();
     // Map posts to quote objects: use title as text and userId as category

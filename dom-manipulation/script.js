@@ -250,7 +250,7 @@ function createAddQuoteForm() {
   // Export button
   const exportBtn = document.createElement('button');
   exportBtn.id = 'exportJsonBtn';
-  exportBtn.textContent = 'Export JSON';
+  exportBtn.textContent = 'Export Quotes';
   exportBtn.style.marginLeft = '8px';
   exportBtn.addEventListener('click', exportToJson);
 

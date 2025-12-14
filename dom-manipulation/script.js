@@ -75,6 +75,11 @@ async function fetchServerQuotes() {
   }
 }
 
+// Backwards-compatible wrapper requested by user
+function fetchQuotesFromServer() {
+  return fetchServerQuotes();
+}
+
 // Sync logic: server takes precedence; store local snapshot to allow reverting
 async function syncWithServer() {
   const serverQuotes = await fetchServerQuotes();
@@ -247,18 +252,10 @@ function createAddQuoteForm() {
   addBtn.textContent = 'Add Quote';
   addBtn.addEventListener('click', addQuote);
 
-  // Import file input
-  const importInput = document.createElement('input');
-  importInput.type = 'file';
-  importInput.id = 'importFile';
-  importInput.accept = '.json,application/json';
-  importInput.style.marginLeft = '8px';
-  importInput.addEventListener('change', importFromJsonFile);
-
+  // Import file input is provided in HTML; only append other form controls
   container.appendChild(inputText);
   container.appendChild(inputCategory);
   container.appendChild(addBtn);
-  container.appendChild(importInput);
 
   const existing = document.getElementById('quoteDisplay');
   if (existing && existing.parentNode) {
@@ -397,6 +394,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const exportBtnEl = document.getElementById('exportJsonBtn');
   if (exportBtnEl) exportBtnEl.addEventListener('click', exportToJson);
+  const importEl = document.getElementById('importFile');
+  if (importEl) importEl.addEventListener('change', importFromJsonFile);
 
   // Load persisted quotes first
   loadQuotesFromLocalStorage();
